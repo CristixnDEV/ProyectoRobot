@@ -35,25 +35,8 @@ public class PlayerController : MonoBehaviour
         if (inputHorizontal > zero || inputHorizontal < zero || inputVertical > zero || inputVertical < zero)
         {
             if (_checkCollisions.IsInvert)
-            {
-                Debug.Log("Estoy aqui");
-                
-                if (Input.GetKey(KeyCode.D))
-                {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speedLinear * 0.5f);
-                }
-                if (Input.GetKey(KeyCode.A))
-                {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speedLinear * -0.5f);
-                }
-                if (Input.GetKey(KeyCode.W))
-                {
-                    rb.velocity = new Vector3(speedLinear *  -0.5f, rb.velocity.y, rb.velocity.z);
-                }
-                if (Input.GetKey(KeyCode.S))
-                {
-                    rb.velocity = new Vector3(speedLinear * 0.5f, rb.velocity.y, rb.velocity.z);
-                }
+            { 
+                rb.velocity = new Vector3(speedLinear * inputVertical * -1, rb.velocity.y, speedLinear * inputHorizontal);
             }
             else
             {
